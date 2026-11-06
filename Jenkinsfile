@@ -26,7 +26,7 @@ pipeline {
         }
     }
 
-        post {
+    post {
         success {
             echo "Build succeeded: ${IMAGE_NAME}:${IMAGE_TAG}"
         }
@@ -39,3 +39,4 @@ pipeline {
             )
         }
     }
+}
