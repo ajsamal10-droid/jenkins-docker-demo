@@ -1,3 +1,3 @@
-FROM nginx:alpin3
+FROM nginx:alpin
 COPY index.html /usr/share/nginx/html/index.html
 EXPOSE 80
