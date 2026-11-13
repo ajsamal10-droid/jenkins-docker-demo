@@ -27,9 +27,14 @@ pipeline {
     }
 
     post {
-        success {
-            echo "Build succeeded: ${IMAGE_NAME}:${IMAGE_TAG}"
-        }
+           success {
+       echo "Build succeeded: ${IMAGE_NAME}:${IMAGE_TAG}"
+       slackSend(
+           channel: '#jenkins-alerts',
+           color: 'good',
+           message: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} built ${IMAGE_NAME}:${IMAGE_TAG}\n${env.BUILD_URL}"
+       )
+   }
         failure {
             echo 'Build failed. Sending Slack notification...'
             slackSend(
